@@ -82,87 +82,15 @@ const {
 
     <!-- GTM -->
     {gtmId && (
-      <script is:inline>
-        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','${gtmId}');`}
-      </script>
-    )}
+  <script is:inline>
+    {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id=' + i + dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${gtmId}');`}
+  </script>
+)}
 
-
-   <script is:inline>
-{`
-window.dataLayer = window.dataLayer || [];
-
-function dl(eventName, payload){
-  try{
-    window.dataLayer.push(Object.assign({
-      event: eventName,
-      page_path: location.pathname,
-      page_title: document.title
-    }, payload || {}));
-  }catch(e){}
-}
-
-// page view signal
-dl('page_view_custom');
-
-// click tracking by data-track
-document.addEventListener('click', function(e){
-  var el = e.target && e.target.closest ? e.target.closest('[data-track]') : null;
-  if(!el) return;
-
-  var name = el.getAttribute('data-track') || '';
-  var meta = el.getAttribute('data-track-meta') || '';
-  var href = el.getAttribute('href') || '';
-
-  // tel clicks
-  if(href && href.startsWith('tel:')){
-    dl('tel_click', { name: name || 'tel', label: meta || href.replace('tel:','') });
-    return;
-  }
-
-  // generic
-  dl('ui_click', { name: name, label: meta, href: href });
-}, { passive: true });
-
-document.addEventListener('toggle', function(e){
-  var d = e.target;
-  if(!d || d.tagName !== 'DETAILS') return;
-  if(!d.hasAttribute('data-faq')) return;
-  if(d.open){
-    dl('faq_open', { label: d.getAttribute('data-faq') || '' });
-  }
-}, true);
-
-// scroll depth (25/50/75/90)
-(function(){
-  var fired = {};
-  function check(){
-    var doc = document.documentElement;
-    var scrollTop = window.scrollY || doc.scrollTop || 0;
-    var height = (doc.scrollHeight || 0) - (window.innerHeight || 0);
-    if(height <= 0) return;
-    var p = Math.round((scrollTop / height) * 100);
-
-    [25,50,75,90].forEach(function(t){
-      if(!fired[t] && p >= t){
-        fired[t] = true;
-        dl('scroll_depth', { percent: t });
-      }
-    });
-  }
-  window.addEventListener('scroll', check, { passive: true });
-  check();
-})();
-
-// time on page pings
-setTimeout(function(){ dl('time_on_page', { seconds: 15 }); }, 15000);
-setTimeout(function(){ dl('time_on_page', { seconds: 45 }); }, 45000);
-`}
-</script>
 {schemaJson && (
   <script type="application/ld+json" is:inline>
     {JSON.stringify(schemaJson)}
@@ -184,5 +112,72 @@ setTimeout(function(){ dl('time_on_page', { seconds: 45 }); }, 45000);
     )}
 
     <slot />
+
+ <script is:inline>
+ 
+ 
+
+  window.dataLayer = window.dataLayer || [];
+
+  function dl(eventName, payload) {
+    try {
+      window.dataLayer.push(Object.assign({
+        event: eventName,
+        page_path: location.pathname,
+        page_title: document.title
+      }, payload || {}));
+    } catch (e) {}
+  }
+
+  dl('page_view_custom');
+
+  document.addEventListener('click', function(e){
+    var el = e.target && e.target.closest ? e.target.closest('[data-track]') : null;
+    if(!el) return;
+
+    var name = el.getAttribute('data-track') || '';
+    var meta = el.getAttribute('data-track-meta') || '';
+    var href = el.getAttribute('href') || '';
+
+    if(href && href.startsWith('tel:')){
+      dl('tel_click', { name: name || 'tel', label: meta || href.replace('tel:','') });
+      return;
+    }
+
+    dl('ui_click', { name: name, label: meta, href: href });
+  }, { passive: true });
+
+  document.addEventListener('toggle', function(e){
+    var d = e.target;
+    if(!d || d.tagName !== 'DETAILS') return;
+    if(!d.hasAttribute('data-faq')) return;
+    if(d.open){
+      dl('faq_open', { label: d.getAttribute('data-faq') || '' });
+    }
+  }, true);
+
+  (function(){
+    var fired = {};
+    function check(){
+      var doc = document.documentElement;
+      var scrollTop = window.scrollY || doc.scrollTop || 0;
+      var height = (doc.scrollHeight || 0) - (window.innerHeight || 0);
+      if(height <= 0) return;
+      var p = Math.round((scrollTop / height) * 100);
+
+      [25,50,75,90].forEach(function(t){
+        if(!fired[t] && p >= t){
+          fired[t] = true;
+          dl('scroll_depth', { percent: t });
+        }
+      });
+    }
+    window.addEventListener('scroll', check, { passive: true });
+    check();
+  })();
+
+  setTimeout(function(){ dl('time_on_page', { seconds: 15 }); }, 15000);
+  setTimeout(function(){ dl('time_on_page', { seconds: 45 }); }, 45000);
+</script>
   </body>
 </html>
