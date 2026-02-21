@@ -1,0 +1,61 @@
+---
+const { phone } = Astro.props;
+
+// tel بهتره بدون خط تیره باشه
+const tel = String(phone || "").replace(/[^\d+]/g, "");
+---
+
+<div class="stickyCall" role="region" aria-label="تماس سریع">
+  <div class="stickyCall__inner container">
+    <a
+      class="stickyCall__btn"
+      href={`tel:${tel}`}
+      data-track="sticky_call"
+      data-track-meta={tel}
+      aria-label={`تماس با ${tel}`}
+    >
+      <span class="stickyCall__title">تماس فوری</span>
+      <span class="stickyCall__sub">{tel}</span>
+    </a>
+  </div>
+</div>
+
+<style>
+  .stickyCall{
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: 60;
+    padding: 10px 0 calc(10px + env(safe-area-inset-bottom));
+    background: rgba(255,255,255,0.92);
+    border-top: 1px solid rgba(0,0,0,0.06);
+    backdrop-filter: blur(10px);
+  }
+
+  .stickyCall__inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stickyCall__btn{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: #111;
+    color: #fff;
+    font-weight: 900;
+    border: 1px solid rgba(0,0,0,0.12);
+  }
+
+  .stickyCall__title{ font-size: 14px; line-height: 1.2; }
+  .stickyCall__sub{ font-size: 12px; opacity: 0.9; margin-top: 4px; font-weight: 700; }
+
+  @media (min-width: 900px){
+    .stickyCall{ display:none; }
+  }
+</style>

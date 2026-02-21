@@ -13,6 +13,56 @@ import BlogTeaser from "../../components/Sections/BlogTeaser.astro";
 import FinalCTA from "../../components/Sections/FinalCTA.astro";
 
 const canonical = "https://bartar-repairer.com/landing-divar-laptop/";
+
+import { LANDING } from "../../config/landing";
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "برتر سرویس",
+    "url": canonical,
+    "telephone": LANDING.phone,
+    "areaServed": "تهران خیابان مطهری خیابان فراهانی پلاک ۵۶ ساختمان برتر سرویس",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tehran",
+      "addressCountry": "IR"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "هزینه تعمیر لپ تاپ چطور مشخص می‌شود؟",
+        "acceptedAnswer": { "@type": "Answer", "text": "پس از عیب‌یابی تخصصی، هزینه قطعی اعلام می‌شود. در صورت عدم تایید شما، تعمیر انجام نمی‌شود." }
+      },
+      {
+        "@type": "Question",
+        "name": "چقدر زمان می‌برد تا لپ تاپ آماده شود؟",
+        "acceptedAnswer": { "@type": "Answer", "text": "بسته به نوع خرابی متفاوت است. موارد رایج در سریع‌ترین زمان ممکن انجام می‌شود و زمان تقریبی بعد از بررسی اعلام می‌گردد." }
+      },
+      {
+        "@type": "Question",
+        "name": "گارانتی تعمیرات دارید؟",
+        "acceptedAnswer": { "@type": "Answer", "text": "بله، تعمیرات با گارانتی کتبی و معتبر تحویل داده می‌شود." }
+      },
+      {
+        "@type": "Question",
+        "name": "برای تهران پیک رایگان دارید؟",
+        "acceptedAnswer": { "@type": "Answer", "text": "بله، دریافت و ارسال دستگاه در تهران با پیک رایگان انجام می‌شود." }
+      },
+      {
+        "@type": "Question",
+        "name": "Hیا از قطعات اورجینال استفاده می‌کنید؟",
+        "acceptedAnswer": { "@type": "Answer", "text": "در صورت نیاز به تعویض قطعه، گزینه‌های قطعه (اورجینال/جایگزین) شفاف توضیح داده می‌شود." }
+      }
+    ]
+  }
+];
+
 ---
 
 <BaseLayout
@@ -20,6 +70,7 @@ const canonical = "https://bartar-repairer.com/landing-divar-laptop/";
   description="تعمیرات تخصصی لپ تاپ با عیب‌یابی دقیق، قطعات اورجینال، گارانتی کتبی و پیک رایگان در تهران. همین حالا تماس بگیرید."
   canonical={canonical}
   gtmId="GTM-KZQV2SN"
+  schemaJson={schema}
 >
   <Header />
 
@@ -37,7 +88,8 @@ const canonical = "https://bartar-repairer.com/landing-divar-laptop/";
   <StickyCall phone="02191300348" />
 
   <style>
-    main { padding-bottom: 90px; }
-    @media (min-width: 900px){ main { padding-bottom: 0; } }
-  </style>
+  main { padding-bottom: 90px; }
+  @media (min-width: 900px){ main { padding-bottom: 0; } }
+</style>
+
 </BaseLayout>

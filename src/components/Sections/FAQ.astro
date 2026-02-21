@@ -17,7 +17,7 @@ const faqs = [
 
     <div class="faq__list">
       {faqs.map((f, idx) => (
-        <details class="faqItem" data-track="faq_toggle" data-track-meta={`${idx+1}:${f.q}`}>
+        <details class="faqItem" data-faq={`${idx+1}:${f.q}`}>
           <summary class="faqItem__q">{f.q}</summary>
           <div class="faqItem__a">{f.a}</div>
         </details>
