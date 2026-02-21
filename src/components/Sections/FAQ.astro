@@ -1,0 +1,67 @@
+---
+const faqs = [
+  { q: "هزینه تعمیر لپ تاپ چطور مشخص می‌شود؟", a: "پس از عیب‌یابی تخصصی، هزینه قطعی اعلام می‌شود. در صورت عدم تایید شما، تعمیر انجام نمی‌شود." },
+  { q: "چقدر زمان می‌برد تا لپ تاپ آماده شود؟", a: "بسته به نوع خرابی متفاوت است. موارد رایج در سریع‌ترین زمان ممکن انجام می‌شود و زمان تقریبی بعد از بررسی اعلام می‌گردد." },
+  { q: "گارانتی تعمیرات دارید؟", a: "بله، تعمیرات با گارانتی کتبی و معتبر تحویل داده می‌شود." },
+  { q: "برای تهران پیک رایگان دارید؟", a: "بله، دریافت و ارسال دستگاه در تهران با پیک رایگان انجام می‌شود." },
+  { q: "آیا از قطعات اورجینال استفاده می‌کنید؟", a: "در صورت نیاز به تعویض قطعه، گزینه‌های قطعه (اورجینال/جایگزین) شفاف توضیح داده می‌شود." },
+];
+---
+
+<section class="faq" aria-label="سوالات متداول تعمیر لپ تاپ">
+  <div class="container">
+    <div class="faq__head">
+      <h2 class="faq__title">سوالات متداول</h2>
+      <p class="faq__subtitle">اگر سوال دیگری دارید، تماس بگیرید.</p>
+    </div>
+
+    <div class="faq__list">
+      {faqs.map((f, idx) => (
+        <details class="faqItem" data-track="faq_toggle" data-track-meta={`${idx+1}:${f.q}`}>
+          <summary class="faqItem__q">{f.q}</summary>
+          <div class="faqItem__a">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq{ padding: 14px 0 6px; }
+  .faq__head{ margin-bottom: 12px; }
+  .faq__title{ margin: 0 0 6px; font-size: 18px; }
+  .faq__subtitle{ margin: 0; font-size: 13px; opacity: 0.85; }
+
+  .faq__list{ display:grid; gap: 10px; }
+
+  .faqItem{
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 16px;
+    background: rgba(0,0,0,0.02);
+    overflow: hidden;
+  }
+  .faqItem__q{
+    cursor: pointer;
+    padding: 12px 12px;
+    font-weight: 900;
+    font-size: 14px;
+    list-style: none;
+  }
+  .faqItem__q::-webkit-details-marker{ display:none; }
+  .faqItem__q::after{
+    content: "＋";
+    float: left;
+    opacity: 0.7;
+  }
+  details[open] > .faqItem__q::after{ content: "－"; }
+
+  .faqItem__a{
+    padding: 0 12px 12px;
+    font-size: 13px;
+    opacity: 0.9;
+  }
+
+  @media (min-width: 900px){
+    .faq{ padding: 18px 0 8px; }
+  }
+</style>

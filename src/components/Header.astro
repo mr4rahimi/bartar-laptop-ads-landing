@@ -4,40 +4,45 @@ const phone = "02191300348";
 
 <header class="header" role="banner">
   <div class="container header__inner">
-    
     <a class="brand" href="/" aria-label="برتر سرویس">
       <img
-  class="brand__logoImg"
-  src="/img/logo.webp"
-  width="32"
-  height="32"
-  alt="لوگوی برتر سرویس"
-  loading="eager"
-  decoding="async"
-/>
+        class="brand__logoImg"
+        src="/img/logo.webp"
+        width="32"
+        height="32"
+        alt="لوگوی برتر سرویس"
+        loading="eager"
+        decoding="async"
+      />
       <span class="brand__name">برتر سرویس</span>
     </a>
 
-   
+    <!-- دسکتاپ -->
     <nav class="nav" aria-label="منوی اصلی">
-      <a href="/repair-laptop/" data-track="nav_repair_laptop">تعمیرات لپتاپ</a>
-      <a href="/contact/" data-track="nav_contact">تماس با ما</a>
-      <a href="/about/" data-track="nav_about">درباره ما</a>
-      <a href="/blog/" data-track="nav_blog">بلاگ</a>
+      <a href="https://bartar-repairer.com/services/laptop-repair/" data-track="nav_repair_laptop">تعمیرات لپتاپ</a>
+      <a href="https://bartar-repairer.com/contact/" data-track="nav_contact">تماس با ما</a>
+      <a href="https://bartar-repairer.com/about/" data-track="nav_about">درباره ما</a>
+      <a href="https://bartar-repairer.com/blog/" data-track="nav_blog">بلاگ</a>
     </nav>
 
-   
     <div class="call">
       <a class="call__link" href={`tel:${phone}`} data-track="header_call" data-track-meta={phone}>
-        <span class="call__icon" aria-hidden="true">📞</span>
+        <span aria-hidden="true">📞</span>
         <span class="call__text">{phone}</span>
       </a>
     </div>
 
-    
-    <button class="menuBtn" type="button" aria-label="باز کردن منو" data-track="mobile_menu_open">
-      ☰
-    </button>
+    <!-- موبایل: منوی بازشو بدون JS -->
+    <details class="mnav">
+      <summary class="mnav__btn" aria-label="باز کردن منو" data-track="mobile_menu_toggle">☰</summary>
+      <div class="mnav__panel" role="menu">
+        <a role="menuitem" href="https://bartar-repairer.com/services/laptop-repair/" data-track="mnav_repair">تعمیرات لپتاپ</a>
+        <a role="menuitem" href="https://bartar-repairer.com/contact/" data-track="mnav_contact">تماس با ما</a>
+        <a role="menuitem" href="https://bartar-repairer.com/about/" data-track="mnav_about">درباره ما</a>
+        <a role="menuitem" href="https://bartar-repairer.com/blog/" data-track="mnav_blog">بلاگ</a>
+        <a role="menuitem" class="mnav__call" href={`tel:${phone}`} data-track="mnav_call" data-track-meta={phone}>تماس: {phone}</a>
+      </div>
+    </details>
   </div>
 </header>
 
@@ -48,44 +53,54 @@ const phone = "02191300348";
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0,0,0,0.06);
   }
-  .header__inner{
-    display:flex; align-items:center; justify-content:space-between;
-    padding: 12px 0;
-    gap: 16px;
-    padding-inline: 16px;
-  }
-  .header .container{ padding-inline: 16px; }
+  .header__inner{ display:flex; align-items:center; justify-content:space-between; gap: 12px; padding: 12px 0; }
+
   .brand{ display:flex; align-items:center; gap:10px; }
-  .brand__logo{ font-size: 20px; }
-  .brand__name{ font-size: 16px; font-weight: 600; }
+  .brand__logoImg{ width:32px; height:32px; border-radius:8px; display:block; }
+  .brand__name{ font-size: 16px; font-weight: 700; }
 
-  .brand__logoImg{
-  width:32px;
-  height:32px;
-  border-radius: 8px;
-  display:block;
-}
-
-  .nav{ display:none; gap: 18px; font-size: 14px; }
-  .nav a{ opacity: 0.9; }
-  .nav a:hover{ opacity: 1; }
-
+  .nav{ display:none; gap: 18px; font-size: 14px; opacity: 0.95; }
   .call{ display:none; }
   .call__link{ display:flex; align-items:center; gap:8px; padding: 8px 10px; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; }
-  .call__text{ font-weight: 600; font-size: 14px; }
+  .call__text{ font-weight: 700; font-size: 14px; }
 
-  .menuBtn{
-    display:flex;
+  .mnav{ position: relative; }
+  .mnav__btn{
+    list-style:none;
     border: 1px solid rgba(0,0,0,0.12);
     background:#fff;
     border-radius: 10px;
     padding: 8px 10px;
     font-size: 16px;
+    cursor: pointer;
   }
+  .mnav__btn::-webkit-details-marker{ display:none; }
+
+  .mnav__panel{
+    position: absolute;
+    left: 0;
+    top: calc(100% + 10px);
+    width: 240px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 14px;
+    padding: 10px;
+    display: grid;
+    gap: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  }
+  .mnav__panel a{
+    padding: 10px 10px;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.02);
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .mnav__call{ background:#111 !important; color:#fff; }
 
   @media (min-width: 900px){
     .nav{ display:flex; }
     .call{ display:block; }
-    .menuBtn{ display:none; }
+    .mnav{ display:none; }
   }
 </style>

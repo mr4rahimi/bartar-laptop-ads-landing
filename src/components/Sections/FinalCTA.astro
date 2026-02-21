@@ -1,0 +1,61 @@
+---
+const phone = "02191300348";
+---
+
+<section class="finalCta" aria-label="تماس برای تعمیر لپ تاپ">
+  <div class="container">
+    <div class="finalCta__box">
+      <h2 class="finalCta__title">برای تعمیر لپ‌تاپ آماده‌اید؟</h2>
+      <p class="finalCta__desc">
+        مشاوره رایگان، عیب‌یابی دقیق، گارانتی کتبی و پیک رایگان تهران.
+      </p>
+
+      <div class="finalCta__actions">
+        <a class="btn btn--primary" href={`tel:${phone}`} data-track="final_call_primary" data-track-meta={phone}>
+          تماس فوری
+        </a>
+        <a class="btn btn--ghost" href={`tel:${phone}`} data-track="final_call_secondary" data-track-meta={phone}>
+          {phone}
+        </a>
+      </div>
+
+      <p class="finalCta__note">اگر مشغول هستید، شماره را ذخیره کنید و بعداً تماس بگیرید.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .finalCta{ padding: 14px 0 22px; }
+  .finalCta__box{
+    padding: 16px;
+    border-radius: 18px;
+    border: 1px solid rgba(0,0,0,0.10);
+    background: #111;
+    color: #fff;
+  }
+  .finalCta__title{ margin: 0 0 8px; font-size: 18px; font-weight: 1000; }
+  .finalCta__desc{ margin: 0 0 14px; font-size: 13px; opacity: 0.88; }
+
+  .finalCta__actions{ display:flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.18);
+    font-weight: 900;
+    font-size: 14px;
+    min-width: 140px;
+  }
+  .btn--primary{ background:#fff; color:#111; }
+  .btn--ghost{ background: transparent; color:#fff; }
+
+  .finalCta__note{ margin: 0; font-size: 12px; opacity: 0.8; }
+
+  @media (min-width: 900px){
+    .finalCta{ padding: 18px 0 28px; }
+    .finalCta__title{ font-size: 20px; }
+  }
+</style>

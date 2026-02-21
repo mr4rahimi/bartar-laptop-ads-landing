@@ -45,13 +45,13 @@ const {
     />
 
  
-   <style>
-  @font-face {
-    font-family: "Vazir";
-    src: url("/Vazir-Medium.woff2") format("woff2");
-    font-display: swap;
-    font-weight: 500;
-    font-style: normal;
+  <style is:global>
+  @font-face{
+    font-family:"Vazir";
+    src:url("/Vazir-Medium.woff2") format("woff2");
+    font-display:swap;
+    font-weight:500;
+    font-style:normal;
   }
 
   :root { color-scheme: light; }
@@ -59,10 +59,10 @@ const {
   html, body { margin: 0; padding: 0; }
 
   body{
-    font-family: "Vazir", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    background: #fff;
-    color: #111;
-    line-height: 1.7;
+    font-family:"Vazir", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    background:#ffffff;
+    color:#111;
+    line-height:1.7;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -75,11 +75,6 @@ const {
     width: min(1120px, 100%);
     margin: 0 auto;
     padding-inline: 16px;
-  }
-
-  .sr-only{
-    position:absolute; width:1px; height:1px; padding:0; margin:-1px;
-    overflow:hidden; clip:rect(0,0,0,0); border:0;
   }
 </style>
 
