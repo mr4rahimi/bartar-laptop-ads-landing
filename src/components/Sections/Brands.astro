@@ -1,0 +1,72 @@
+---
+const brands = [
+  { name: "Apple / MacBook", href: "https://bartar-repairer.com/apple/macbook/" },
+  { name: "Dell", href: "https://bartar-repairer.com/dell/lap-top/" },
+  { name: "Acer", href: "https://bartar-repairer.com/lap-top-acer/" },
+  { name: "ASUS", href: "https://bartar-repairer.com/asus/lap-top-2/" },
+  { name: "Lenovo", href: "https://bartar-repairer.com/lenovo/lap-top/" },
+  { name: "HP", href: "https://bartar-repairer.com/hp/lap-top/" },
+  { name: "MSI", href: "https://bartar-repairer.com/services/laptop-repair/repair-msi-laptop/" },
+  { name: "Xiaomi", href: "https://bartar-repairer.com/xiaomi/lap-top/" },
+  { name: "Microsoft Surface", href: "https://bartar-repairer.com/services/laptop-repair/surface-laptop-repair/" },
+  { name: "Sony", href: "https://bartar-repairer.com/sony/lap-top/" },
+  { name: "Samsung", href: "https://bartar-repairer.com/samsung/lap-top/" },
+];
+---
+
+<section class="brands" aria-label="تعمیر لپ تاپ برندهای مختلف">
+  <div class="container">
+    <div class="brands__head">
+      <h2 class="brands__title">تعمیر لپ‌تاپ همه برندها</h2>
+      <p class="brands__subtitle">روی برند خودت کلیک کن تا جزئیات خدمات رو ببینی.</p>
+    </div>
+
+    <div class="brands__grid" role="list">
+      {brands.map((b) => (
+        <a
+          class="brandItem"
+          role="listitem"
+          href={b.href}
+          target="_blank"
+          rel="noopener"
+          data-track="brand_click"
+          data-track-meta={b.name}
+        >
+          <span class="brandItem__name">{b.name}</span>
+          <span class="brandItem__arrow" aria-hidden="true">←</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .brands{ padding: 14px 0 6px; }
+  .brands__head{ margin-bottom: 12px; }
+  .brands__title{ margin: 0 0 6px; font-size: 18px; }
+  .brands__subtitle{ margin: 0; font-size: 13px; opacity: 0.85; }
+
+  .brands__grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .brandItem{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 12px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.10);
+    background: #fff;
+  }
+  .brandItem:hover{ background: rgba(0,0,0,0.02); }
+  .brandItem__name{ font-weight: 800; font-size: 14px; }
+  .brandItem__arrow{ opacity: 0.65; }
+
+  @media (min-width: 900px){
+    .brands{ padding: 18px 0 8px; }
+    .brands__grid{ grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
