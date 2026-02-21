@@ -1,0 +1,169 @@
+---
+const phone = "02191300348";
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__badge">پیک رایگان تهران • گارانتی کتبی • مشاوره رایگان</p>
+
+      <h1 class="hero__title">تعمیرات تخصصی لپ تاپ</h1>
+
+      <p class="hero__subtitle">
+        برتر سرویس بزرگترین مرکز تعمیرات لپ تاپ در کشور
+      </p>
+
+      <div class="hero__cta">
+        <a
+          class="btn btn--primary"
+          href={`tel:${phone}`}
+          data-track="hero_call_primary"
+          data-track-meta={phone}
+        >
+          تماس فوری
+        </a>
+
+        <a
+          class="btn btn--ghost"
+          href={`tel:${phone}`}
+          data-track="hero_call_secondary"
+          data-track-meta={phone}
+        >
+          {phone}
+        </a>
+      </div>
+
+      <ul class="hero__trust" aria-label="مزیت‌های سریع">
+        <li>✅ تعمیرات فوری</li>
+        <li>✅ اعلام هزینه بعد از عیب‌یابی</li>
+        <li>✅ قطعات اورجینال</li>
+      </ul>
+    </div>
+
+    <div class="hero__card" aria-label="کارت تماس">
+      <div class="card">
+        <div class="card__title">تماس مستقیم</div>
+        <div class="card__phone">{phone}</div>
+        <a
+          class="btn btn--primary btn--full"
+          href={`tel:${phone}`}
+          data-track="hero_card_call"
+          data-track-meta={phone}
+        >
+          همین الان تماس بگیر
+        </a>
+        <p class="card__note">
+          پاسخگویی سریع • هماهنگی پیک • مشاوره رایگان
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero{
+    padding: 22px 0 18px;
+  }
+  .hero__inner{
+    display:grid;
+    gap: 18px;
+  }
+
+  .hero__badge{
+    display:inline-flex;
+    padding: 8px 10px;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 999px;
+    font-size: 13px;
+    opacity: 0.92;
+    margin: 0 0 12px;
+    background: rgba(0,0,0,0.02);
+  }
+
+  .hero__title{
+    margin: 0 0 8px;
+    font-size: 28px;
+    line-height: 1.35;
+    letter-spacing: -0.2px;
+  }
+
+  .hero__subtitle{
+    margin: 0 0 14px;
+    font-size: 15px;
+    opacity: 0.9;
+  }
+
+  .hero__cta{
+    display:flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.12);
+    font-weight: 700;
+    font-size: 14px;
+    min-width: 140px;
+  }
+  .btn--primary{
+    background: #111;
+    color: #fff;
+    border-color: rgba(0,0,0,0.12);
+  }
+  .btn--ghost{
+    background: #fff;
+    color: #111;
+  }
+  .btn--full{ width:100%; }
+
+  .hero__trust{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display:flex;
+    flex-wrap:wrap;
+    gap: 10px 14px;
+    font-size: 13px;
+    opacity: 0.92;
+  }
+
+  .hero__card .card{
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 18px;
+    padding: 16px;
+    background: rgba(0,0,0,0.02);
+  }
+  .card__title{
+    font-size: 13px;
+    opacity: 0.8;
+    margin-bottom: 8px;
+  }
+  .card__phone{
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: 0.2px;
+  }
+  .card__note{
+    margin: 10px 0 0;
+    font-size: 12px;
+    opacity: 0.8;
+  }
+
+  @media (min-width: 900px){
+    .hero{ padding: 34px 0 22px; }
+    .hero__inner{
+      grid-template-columns: 1.3fr 0.7fr;
+      align-items: start;
+      gap: 22px;
+    }
+    .hero__title{ font-size: 36px; }
+    .hero__subtitle{ font-size: 16px; }
+  }
+</style>
