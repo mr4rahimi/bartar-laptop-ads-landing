@@ -1,0 +1,123 @@
+---
+const phone = "02191300348";
+
+const items = [
+  { icon: "✓", title: "تعمیرات فوری لپ تاپ", desc: "سرعت بالا + عیب‌یابی دقیق" },
+  { icon: "🧩", title: "گارانتی کتبی تعمیرات", desc: "تحویل دستگاه با ضمانت معتبر" },
+  { icon: "🛠️", title: "استفاده از قطعات اورجینال", desc: "کیفیت و دوام بالاتر" },
+  { icon: "💰", title: "تضمین مناسب‌ترین هزینه", desc: "شفافیت قبل از تعمیر" },
+  { icon: "🔎", title: "عیب‌یابی تخصصی", desc: "اعلام هزینه قطعی پس از بررسی" },
+  { icon: "🚚", title: "پیک رایگان در سراسر تهران", desc: "دریافت و ارسال دستگاه" },
+];
+---
+
+<section class="features" aria-label="ویژگی‌های برتر سرویس">
+  <div class="container">
+    <div class="features__head">
+      <h2 class="features__title">چرا برتر سرویس؟</h2>
+      <p class="features__subtitle">
+        تمرکز روی سرعت، دقت و شفافیت؛ برای اینکه سریع‌تر به نتیجه برسید.
+      </p>
+    </div>
+
+    <div class="features__grid">
+      {items.map((it) => (
+        <div class="feat" role="listitem">
+          <div class="feat__icon" aria-hidden="true">{it.icon}</div>
+          <div class="feat__text">
+            <div class="feat__t">{it.title}</div>
+            <div class="feat__d">{it.desc}</div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="features__cta">
+      <div class="ctaBox">
+        <div class="ctaBox__text">
+          <div class="ctaBox__title">برای مشاوره و ثبت تعمیر تماس بگیرید</div>
+          <div class="ctaBox__desc">پاسخگویی سریع • هماهنگی پیک • عیب‌یابی تخصصی</div>
+        </div>
+
+        <a
+          class="ctaBox__btn"
+          href={`tel:${phone}`}
+          data-track="features_call"
+          data-track-meta={phone}
+        >
+          تماس با {phone}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .features{ padding: 18px 0 10px; }
+  .features__head{ margin-bottom: 12px; }
+  .features__title{ margin: 0 0 6px; font-size: 20px; }
+  .features__subtitle{ margin: 0; font-size: 14px; opacity: 0.85; }
+
+  .features__grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .feat{
+    display:flex;
+    gap: 12px;
+    align-items:flex-start;
+    padding: 12px;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 16px;
+    background: rgba(0,0,0,0.02);
+  }
+  .feat__icon{
+    width: 36px; height: 36px;
+    display:flex; align-items:center; justify-content:center;
+    border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 12px;
+    background: #fff;
+    flex: 0 0 auto;
+  }
+  .feat__t{ font-weight: 800; font-size: 14px; margin-bottom: 2px; }
+  .feat__d{ font-size: 13px; opacity: 0.85; }
+
+  .features__cta{ margin-top: 14px; }
+
+  .ctaBox{
+    display:flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(0,0,0,0.10);
+    background: #111;
+    color: #fff;
+  }
+  .ctaBox__title{ font-weight: 900; font-size: 15px; }
+  .ctaBox__desc{ font-size: 13px; opacity: 0.85; margin-top: 4px; }
+  .ctaBox__btn{
+    display:flex; align-items:center; justify-content:center;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: #fff;
+    color: #111;
+    font-weight: 900;
+    border: 1px solid rgba(255,255,255,0.20);
+  }
+
+  @media (min-width: 900px){
+    .features{ padding: 26px 0 12px; }
+    .features__grid{ grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .features__title{ font-size: 22px; }
+    .ctaBox{
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ctaBox__btn{ min-width: 260px; }
+  }
+</style>
