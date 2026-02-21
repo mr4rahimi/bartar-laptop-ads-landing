@@ -1,0 +1,101 @@
+---
+const phone = "02191300348";
+
+const services = [
+  { name: "تعویض ال‌سی‌دی لپ‌تاپ", meta: "lcd" },
+  { name: "تعمیر و تعویض کیبورد", meta: "keyboard" },
+  { name: "تعمیر مادربرد و چیپست", meta: "motherboard" },
+  { name: "رفع مشکل شارژ و سوکت", meta: "charging" },
+  { name: "تعمیر فن و سیستم خنک‌کننده", meta: "fan" },
+  { name: "ارتقا RAM و SSD", meta: "upgrade" },
+  { name: "نصب ویندوز و درایورها", meta: "os" },
+  { name: "ریکاوری اطلاعات و هارد", meta: "data" },
+];
+---
+
+<section class="services" aria-label="خدمات تعمیر لپ تاپ">
+  <div class="container">
+    <div class="services__head">
+      <h2 class="services__title">خدمات تعمیر لپ‌تاپ</h2>
+      <p class="services__subtitle">نوع مشکل رو انتخاب کن یا مستقیم تماس بگیر.</p>
+    </div>
+
+    <div class="services__grid" role="list">
+      {services.map((s) => (
+        <a
+          class="serviceItem"
+          role="listitem"
+          href={`tel:${phone}`}
+          data-track="service_click"
+          data-track-meta={s.meta}
+          aria-label={`${s.name} - تماس`}
+        >
+          <span class="serviceItem__name">{s.name}</span>
+          <span class="serviceItem__cta">تماس</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="services__cta">
+      <a
+        class="services__call"
+        href={`tel:${phone}`}
+        data-track="services_call"
+        data-track-meta={phone}
+      >
+        تماس برای مشاوره رایگان: {phone}
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services{ padding: 14px 0 6px; }
+  .services__head{ margin-bottom: 12px; }
+  .services__title{ margin: 0 0 6px; font-size: 18px; }
+  .services__subtitle{ margin: 0; font-size: 13px; opacity: 0.85; }
+
+  .services__grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .serviceItem{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 12px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.10);
+    background: rgba(0,0,0,0.02);
+  }
+  .serviceItem:hover{ background: rgba(0,0,0,0.03); }
+  .serviceItem__name{ font-weight: 800; font-size: 14px; }
+  .serviceItem__cta{
+    font-size: 12px;
+    font-weight: 900;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #111;
+    color: #fff;
+  }
+
+  .services__cta{ margin-top: 12px; }
+  .services__call{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: #111;
+    color: #fff;
+    font-weight: 900;
+    border: 1px solid rgba(0,0,0,0.12);
+  }
+
+  @media (min-width: 900px){
+    .services{ padding: 18px 0 8px; }
+    .services__grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

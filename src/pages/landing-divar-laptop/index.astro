@@ -3,7 +3,6 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import StickyCall from "../../components/StickyCall.astro";
 
-
 import Hero from "../../components/Sections/Hero.astro";
 import Brands from "../../components/Sections/Brands.astro";
 import Services from "../../components/Sections/Services.astro";
@@ -35,9 +34,10 @@ const canonical = "https://bartar-repairer.com/landing-divar-laptop/";
     <FinalCTA />
   </main>
 
-  <StickyCall phone="021-91300348" />
+  <StickyCall phone="02191300348" />
+
+  <style>
+    main { padding-bottom: 90px; }
+    @media (min-width: 900px){ main { padding-bottom: 0; } }
+  </style>
 </BaseLayout>
-<style>
-  main { padding-bottom: 90px; }
-  @media (min-width: 900px){ main { padding-bottom: 0; } }
-</style>
