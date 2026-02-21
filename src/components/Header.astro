@@ -6,7 +6,15 @@ const phone = "021-91300348";
   <div class="container header__inner">
     
     <a class="brand" href="/" aria-label="برتر سرویس">
-      <span class="brand__logo" aria-hidden="true">🛠️</span>
+      <img
+  class="brand__logoImg"
+  src="/landing-divar-laptop/assets/img/logo.webp"
+  width="32"
+  height="32"
+  alt="لوگوی برتر سرویس"
+  loading="eager"
+  decoding="async"
+/>
       <span class="brand__name">برتر سرویس</span>
     </a>
 
@@ -44,10 +52,19 @@ const phone = "021-91300348";
     display:flex; align-items:center; justify-content:space-between;
     padding: 12px 0;
     gap: 16px;
+    padding-inline: 16px;
   }
+  .header .container{ padding-inline: 16px; }
   .brand{ display:flex; align-items:center; gap:10px; }
   .brand__logo{ font-size: 20px; }
   .brand__name{ font-size: 16px; font-weight: 600; }
+
+  .brand__logoImg{
+  width:32px;
+  height:32px;
+  border-radius: 8px;
+  display:block;
+}
 
   .nav{ display:none; gap: 18px; font-size: 14px; }
   .nav a{ opacity: 0.9; }
