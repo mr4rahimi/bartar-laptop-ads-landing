@@ -1,0 +1,114 @@
+---
+type Props = {
+  title: string;
+  description: string;
+  canonical: string;
+  ogImage?: string;
+  gtmId?: string;
+};
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  gtmId = "GTM-KZQV2SN", 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph -->
+    <meta property="og:locale" content="fa_IR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+
+    <!-- Preload font -->
+    <link
+      rel="preload"
+      href="/landing-divar-laptop/assets/fonts/Vazir-Medium.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+ 
+    <style>
+      @font-face {
+        font-family: "Vazir";
+        src: url("/landing-divar-laptop/assets/fonts/Vazir-Medium.woff2") format("woff2");
+        font-display: swap;
+        font-weight: 500;
+        font-style: normal;
+      }
+      :root { color-scheme: light; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        font-family: "Vazir", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        background: #fff;
+        color: #111;
+        line-height: 1.7;
+      }
+      a { color: inherit; text-decoration: none; }
+      .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+      .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    </style>
+
+    <!-- GTM -->
+    {gtmId && (
+      <script is:inline>
+        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','${gtmId}');`}
+      </script>
+    )}
+
+    <!-- Event wiring (کلیک‌ها با data-track) -->
+    <script is:inline>
+      {`
+      window.dataLayer = window.dataLayer || [];
+      document.addEventListener('click', function(e){
+        const el = e.target && e.target.closest ? e.target.closest('[data-track]') : null;
+        if(!el) return;
+        const name = el.getAttribute('data-track');
+        const meta = el.getAttribute('data-track-meta');
+        window.dataLayer.push({
+          event: 'ui_click',
+          ui_name: name,
+          ui_meta: meta || ''
+        });
+      }, { passive: true });
+      `}
+    </script>
+  </head>
+
+  <body>
+    {gtmId && (
+      <noscript>
+        <iframe
+          src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+          height="0"
+          width="0"
+          style="display:none;visibility:hidden"
+          title="gtm"
+        />
+      </noscript>
+    )}
+
+    <slot />
+  </body>
+</html>

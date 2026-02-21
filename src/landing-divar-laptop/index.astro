@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import StickyCall from "../../components/StickyCall.astro";
+
+
+import Hero from "../../components/Sections/Hero.astro";
+import Brands from "../../components/Sections/Brands.astro";
+import Services from "../../components/Sections/Services.astro";
+import Features from "../../components/Sections/Features.astro";
+import Steps from "../../components/Sections/Steps.astro";
+import FAQ from "../../components/Sections/FAQ.astro";
+import BlogTeaser from "../../components/Sections/BlogTeaser.astro";
+import FinalCTA from "../../components/Sections/FinalCTA.astro";
+
+const canonical = "https://bartar-repairer.com/landing-divar-laptop/";
+---
+
+<BaseLayout
+  title="تعمیرات لپ تاپ در تهران | برتر سرویس"
+  description="تعمیرات تخصصی لپ تاپ با عیب‌یابی دقیق، قطعات اورجینال، گارانتی کتبی و پیک رایگان در تهران. همین حالا تماس بگیرید."
+  canonical={canonical}
+  gtmId="GTM-XXXXXXX"
+>
+  <Header />
+
+  <main>
+    <Hero />
+    <Brands />
+    <Services />
+    <Features />
+    <Steps />
+    <FAQ />
+    <BlogTeaser />
+    <FinalCTA />
+  </main>
+
+  <StickyCall phone="021-XXXXXXX" />
+</BaseLayout>

@@ -1,0 +1,74 @@
+---
+const phone = "021-91300348";
+---
+
+<header class="header" role="banner">
+  <div class="container header__inner">
+    <!-- راست: لوگو -->
+    <a class="brand" href="/" aria-label="برتر سرویس">
+      <span class="brand__logo" aria-hidden="true">🛠️</span>
+      <span class="brand__name">برتر سرویس</span>
+    </a>
+
+    <!-- وسط: منو دسکتاپ -->
+    <nav class="nav" aria-label="منوی اصلی">
+      <a href="/repair-laptop/" data-track="nav_repair_laptop">تعمیرات لپتاپ</a>
+      <a href="/contact/" data-track="nav_contact">تماس با ما</a>
+      <a href="/about/" data-track="nav_about">درباره ما</a>
+      <a href="/blog/" data-track="nav_blog">بلاگ</a>
+    </nav>
+
+    <!-- چپ: شماره تماس (دسکتاپ) -->
+    <div class="call">
+      <a class="call__link" href={`tel:${phone}`} data-track="header_call" data-track-meta={phone}>
+        <span class="call__icon" aria-hidden="true">📞</span>
+        <span class="call__text">{phone}</span>
+      </a>
+    </div>
+
+    <!-- موبایل: دکمه منوی بازشو -->
+    <button class="menuBtn" type="button" aria-label="باز کردن منو" data-track="mobile_menu_open">
+      ☰
+    </button>
+  </div>
+</header>
+
+<style>
+  .header{
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+  .header__inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 12px 0;
+    gap: 16px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand__logo{ font-size: 20px; }
+  .brand__name{ font-size: 16px; font-weight: 600; }
+
+  .nav{ display:none; gap: 18px; font-size: 14px; }
+  .nav a{ opacity: 0.9; }
+  .nav a:hover{ opacity: 1; }
+
+  .call{ display:none; }
+  .call__link{ display:flex; align-items:center; gap:8px; padding: 8px 10px; border: 1px solid rgba(0,0,0,0.08); border-radius: 10px; }
+  .call__text{ font-weight: 600; font-size: 14px; }
+
+  .menuBtn{
+    display:flex;
+    border: 1px solid rgba(0,0,0,0.12);
+    background:#fff;
+    border-radius: 10px;
+    padding: 8px 10px;
+    font-size: 16px;
+  }
+
+  @media (min-width: 900px){
+    .nav{ display:flex; }
+    .call{ display:block; }
+    .menuBtn{ display:none; }
+  }
+</style>
